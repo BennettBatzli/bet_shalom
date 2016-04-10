@@ -146,6 +146,7 @@ tr td {
 .starr {
     width: 40px;
     height: 40px;
+    float: right;
 }
 
 .nav-color {
