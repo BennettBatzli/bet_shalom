@@ -506,10 +506,15 @@ myApp.controller('LessonPlanController', ['$scope', '$http', 'PassportFactory', 
    * End of add/remove tag functions -Savio
    */
 
+  $scope.materialsPlaceholderText = 'Click Checkbox to Add Materials';
   $scope.toggleMaterialsRequirement = function(materials) {
     //$scope.isCollapsed = !$scope.isCollapsed;
     if(materials == false){
       $scope.lesson_materials = null;
+      $scope.materialsPlaceholderText = 'Click Checkbox to Add Materials';
+    } else {
+      $scope.materialsPlaceholderText = 'Add Materials';
+
     }
   };
 

@@ -10,35 +10,24 @@
     </div>
   </div>
 
-
-  <div class="lesson_plan_container col-md-8">
-    <form id="lesson_plan_form" class="form-group row" name="lesson_plan_form">
-      <!--div containing the radio buttons for the admin to choose a resource or lesson; only viewable as admin-->
-      <div class="resource_lesson_radio_container" ng-if="adminEditState">
-        <label for="lesson_plan">Lesson Plan</label>
-        <input type="radio" name="type_selector" ng-model="$parent.type_selector" value="lesson_plan" ng-disabled="statusToCheckIfPublished" class="resource_lesson_radio" id="lesson_plan">
-        <label for="resource">Resource</label>
-        <input type="radio" class="resource_lesson_radio" name="type_selector" ng-model="$parent.type_selector" value="resource" ng-disabled="statusToCheckIfPublished" id="resource">
-        <!--<textarea id="a_comment" rows="3" cols="100" ng-model="kitty" placeholder="enter comment"></textarea>-->
-      </div>
-
-        <label for="lesson_title">Title:</label>
-        <input class="form-control col-sm-2" type="text" id="lesson_title" ng-model="$parent.lesson_title" ng-if="!statusToCheckIfPublished" />
-        <span class="lesson_title_displayed" ng-if="statusToCheckIfPublished">{{lesson_title}}</span>
-      <!--line break for now-->
-      <br>
+  <div class="form-group row">
+    <div class="col-md-4">
+      <!--<label for="lesson_title">Title:</label>-->
+      <input class="form-control col-xs-2" type="text" id="lesson_title" ng-model="$parent.lesson_title" ng-if="!statusToCheckIfPublished" placeholder="Add Title" />
+      <span class="lesson_title_displayed" ng-if="statusToCheckIfPublished">{{lesson_title}}</span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-4">
       <label for="lesson_author">Author:</label>
       <span id="lesson_author">{{lesson_author}}</span>
+    </div>
+  </div>
 
-
-      <!--<div class="starr" ng-show="myFav.favorite_status" ng-click="addFav()"><i class="fa yellow fa-star"></i></div><div class="starr" ng-hide="myFav.favorite_status" ng-click="addFav()"><i class="fa fa-star-o"></i></div>-->
-      <!--<input type="text" id="lesson_author" ng-model="lesson_author" />-->
-
-        <!--<button class="btn btn-primary" ng-click="addFav()" ng-show="$scope.myFav.fk_fav_lesson_id > 0">Add to favorites <span class="glyphicon yellow glyphicon-star"></span></button>-->
-        <!--<button class="btn btn-primary" ng-click="addFav()">Add to favorites <span ng-show="myFav.favorite_status"><i class="fa yellow fa-star"></i></span><span ng-hide="myFav.favorite_status"><i class="fa fa-star"></i></span></button>-->
-
-
+  <div class="form-group row">
+    <div class="col-md-6 create-lesson-tag-container">
       <!-- ngTagsInput -->
+      <label>Add Tags:</label>
       <tags-input ng-model="selectedTag"
                   display-property="tag_name"
                   placeholder="Arrow Down To See Complete List"
@@ -77,9 +66,98 @@
         </div>
       </script>
       <!-- ngTagsInput -->
-      <label for="lesson_materials_checkbox">Materials required?</label>
+    </div>
+
+    <div class="col-md-5 col-md-offset-1">
+      <label for="lesson_materials_checkbox">Special materials required?</label>
       <input type="checkbox" class="materials_checkbox" ng-model="required_materials" ng-change="toggleMaterialsRequirement(required_materials)" ng-disabled="statusToCheckIfPublished" />
-      <textarea class="form-control" id="lesson_materials" ng-class="{'no_gray': statusToCheckIfPublished}" rows="3" cols="130" ng-model="lesson_materials" ng-disabled="!required_materials||statusToCheckIfPublished"></textarea>
+      <textarea class="form-control" id="lesson_materials" ng-class="{'no_gray': statusToCheckIfPublished}" rows="2" cols="130" ng-model="lesson_materials" ng-disabled="!required_materials||statusToCheckIfPublished" placeholder="{{materialsPlaceholderText}}"></textarea>
+    </div>
+  </div>
+
+  <!--<div class="form-group row">-->
+    <!--<div class="col-md-5 col-md-offset-2">-->
+      <!--<label for="lesson_materials_checkbox"> Special materials required?</label>-->
+      <!--<input type="checkbox" class="materials_checkbox" ng-model="required_materials" ng-change="toggleMaterialsRequirement(required_materials)" ng-disabled="statusToCheckIfPublished" />-->
+      <!--<textarea class="form-control" id="lesson_materials" ng-class="{'no_gray': statusToCheckIfPublished}" rows="2" cols="130" ng-model="lesson_materials" ng-disabled="!required_materials||statusToCheckIfPublished" placeholder="{{materialsPlaceholderText}}"></textarea>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <div class="form-group row">
+    <div class="col-md-12">
+      <label for="lesson_text">Lesson text:</label>
+      <textarea id="lesson_text" class="form-control" ng-class="{'no_gray': statusToCheckIfPublished}" rows="20" cols="100" ng-model="lesson_text" ng-disabled="statusToCheckIfPublished"></textarea>
+    </div>
+  </div>
+
+
+  <div class="lesson_plan_container col-md-8">
+    <form id="lesson_plan_form" class="form-group row" name="lesson_plan_form">
+      <!--div containing the radio buttons for the admin to choose a resource or lesson; only viewable as admin-->
+      <!--<div class="resource_lesson_radio_container" ng-if="adminEditState">-->
+        <!--<label for="lesson_plan">Lesson Plan</label>-->
+        <!--<input type="radio" name="type_selector" ng-model="$parent.type_selector" value="lesson_plan" ng-disabled="statusToCheckIfPublished" class="resource_lesson_radio" id="lesson_plan">-->
+        <!--<label for="resource">Resource</label>-->
+        <!--<input type="radio" class="resource_lesson_radio" name="type_selector" ng-model="$parent.type_selector" value="resource" ng-disabled="statusToCheckIfPublished" id="resource">-->
+        <!--&lt;!&ndash;<textarea id="a_comment" rows="3" cols="100" ng-model="kitty" placeholder="enter comment"></textarea>&ndash;&gt;-->
+      <!--</div>-->
+
+        <!--<label for="lesson_title">Title:</label>-->
+        <!--<input class="form-control col-sm-2" type="text" id="lesson_title" ng-model="$parent.lesson_title" ng-if="!statusToCheckIfPublished" />-->
+        <!--<span class="lesson_title_displayed" ng-if="statusToCheckIfPublished">{{lesson_title}}</span>-->
+      <!--<label for="lesson_author">Author:</label>-->
+      <!--<span id="lesson_author">{{lesson_author}}</span>-->
+
+
+      <!--<div class="starr" ng-show="myFav.favorite_status" ng-click="addFav()"><i class="fa yellow fa-star"></i></div><div class="starr" ng-hide="myFav.favorite_status" ng-click="addFav()"><i class="fa fa-star-o"></i></div>-->
+      <!--<input type="text" id="lesson_author" ng-model="lesson_author" />-->
+
+        <!--<button class="btn btn-primary" ng-click="addFav()" ng-show="$scope.myFav.fk_fav_lesson_id > 0">Add to favorites <span class="glyphicon yellow glyphicon-star"></span></button>-->
+        <!--<button class="btn btn-primary" ng-click="addFav()">Add to favorites <span ng-show="myFav.favorite_status"><i class="fa yellow fa-star"></i></span><span ng-hide="myFav.favorite_status"><i class="fa fa-star"></i></span></button>-->
+
+
+      <!--&lt;!&ndash; ngTagsInput &ndash;&gt;-->
+      <!--<tags-input ng-model="selectedTag"-->
+                  <!--display-property="tag_name"-->
+                  <!--placeholder="Arrow Down To See Complete List"-->
+                  <!--replace-spaces-with-dashes="false"-->
+                  <!--on-tag-added="tagAdded($tag)"-->
+                  <!--on-tag-removed="tagRemoved($tag)"-->
+                  <!--add-on-enter="false"-->
+                  <!--template="tag-template"-->
+                  <!--ng-disabled="statusToCheckIfPublished">-->
+        <!--<auto-complete source="loadTags($query)"-->
+                       <!--min-length="0"-->
+                       <!--debounce-delay="100"-->
+                       <!--load-on-down-arrow="true"-->
+                       <!--load-on-focus="true"-->
+                       <!--load-on-empty="false"-->
+                       <!--max-results-to-show="45"-->
+                       <!--template="autocomplete-template"></auto-complete>-->
+      <!--</tags-input>-->
+
+      <!--<script type="text/ng-template" id="tag-template">-->
+        <!--<div class="tag-template">-->
+          <!--<div class="right-panel">-->
+            <!--<span ng-model="selectedTag">{{$getDisplayText()}}</span>-->
+            <!--<a class="remove-button" ng-click="$removeTag()">&#10006;</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</script>-->
+
+      <!--<script type="text/ng-template" id="autocomplete-template">-->
+        <!--<div class="autocomplete-template">-->
+          <!--<div class="right-panel">-->
+            <!--<span ng-bind-html="$highlight($getDisplayText())"></span>-->
+            <!--<span>ID: {{data.tag_id}}, </span>-->
+            <!--<span>Category: {{data.tag_category}}</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</script>-->
+      <!--&lt;!&ndash; ngTagsInput &ndash;&gt;-->
+      <!--<label for="lesson_materials_checkbox">Materials required?</label>-->
+      <!--<input type="checkbox" class="materials_checkbox" ng-model="required_materials" ng-change="toggleMaterialsRequirement(required_materials)" ng-disabled="statusToCheckIfPublished" />-->
+      <!--<textarea class="form-control" id="lesson_materials" ng-class="{'no_gray': statusToCheckIfPublished}" rows="3" cols="130" ng-model="lesson_materials" ng-disabled="!required_materials||statusToCheckIfPublished"></textarea>-->
 
       <!--<button type="button" class="btn btn-default" ng-click="toggleMaterialsRequirement()">Click to add materials.</button>-->
       <!--<hr>-->
@@ -91,10 +169,10 @@
 
     <!--</div>-->
 
-    <label for="lesson_text">Lesson text:</label>
-    <!--line break for now-->
-    <br>
-    <textarea id="lesson_text" class="form-control" ng-class="{'no_gray': statusToCheckIfPublished}" rows="20" cols="100" ng-model="lesson_text" ng-disabled="statusToCheckIfPublished"></textarea>
+    <!--<label for="lesson_text">Lesson text:</label>-->
+    <!--&lt;!&ndash;line break for now&ndash;&gt;-->
+    <!--<br>-->
+    <!--<textarea id="lesson_text" class="form-control" ng-class="{'no_gray': statusToCheckIfPublished}" rows="20" cols="100" ng-model="lesson_text" ng-disabled="statusToCheckIfPublished"></textarea>-->
 
     <!--File upload input and buttons -->
     <div class="row" ng-if="!statusToCheckIfPublished">
@@ -137,10 +215,10 @@
         <!--</div>-->
       <!--</div>-->
 
-      <label for="lesson_text">Lesson text:</label>
-      <!--line break for now-->
-      <br>
-      <textarea id="lesson_text" class="form-control" ng-class="{'no_gray': statusToCheckIfPublished}" rows="20" cols="100" ng-model="lesson_text" ng-disabled="statusToCheckIfPublished"></textarea>
+      <!--<label for="lesson_text">Lesson text:</label>-->
+      <!--&lt;!&ndash;line break for now&ndash;&gt;-->
+      <!--<br>-->
+      <!--<textarea id="lesson_text" class="form-control" ng-class="{'no_gray': statusToCheckIfPublished}" rows="20" cols="100" ng-model="lesson_text" ng-disabled="statusToCheckIfPublished"></textarea>-->
 
       <!--File upload input and buttons -->
       <span class="file_upload" ng-if="!statusToCheckIfPublished">

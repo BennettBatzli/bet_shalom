@@ -10,6 +10,8 @@
 body {
     background-color: #cfc8c6;
     /*background-color: #796f64;*/
+    /*background-image: url("/images/bet_shalom_background_texture.png");*/
+    /*background-repeat: repeat;*/
 
     /*#bfd5ed*/
 }
@@ -160,6 +162,10 @@ tr td {
 #file_input {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.create-lesson-tag-container {
+    /*bottom: 0*/
 }
 
 textarea {
